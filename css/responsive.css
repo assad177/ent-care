@@ -1,0 +1,346 @@
+/* ==========================================================================
+   THE ENT CLINIC - RESPONSIVE STYLESHEET (responsive.css)
+   Comprehensive fluid multi-device responsiveness for Mobile, Tablet & Desktop
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Desktop Layout (1024px+)
+   Preserves floating yellow card offsets and background image positions.
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1240px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Offset Yellow Card 1 (Section 2 - Specialist) */
+  .yellow-card--offset-right {
+    margin-top: -30px;
+    margin-left: auto;
+    max-width: 580px;
+  }
+
+  /* Offset Yellow Card 2 (Section 3 - Cause) */
+  .yellow-card--offset-left {
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  /* Offset Yellow Card 3 (Section 5 - Symptoms) */
+  .yellow-card--offset-top-right {
+    position: relative;
+    top: -20px;
+    margin-left: auto;
+    max-width: 460px;
+  }
+
+  /* Offset Blue Card (Section 6 - Recovery) */
+  .blue-card--offset-bottom-left {
+    margin-top: 2rem;
+    max-width: 580px;
+  }
+
+  /* Offset Yellow Card 4 (Section 7 - Consultation) */
+  .yellow-card--offset-top-left {
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+
+  /* Offset Blue Card 2 (Section 7 - Expertise) */
+  .blue-card--offset-right {
+    margin-top: -40px;
+    margin-left: auto;
+    max-width: 520px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Laptop Viewports (1024px – 1199px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
+  .container {
+    max-width: 1080px;
+  }
+  
+  .grid-2-col {
+    gap: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 3rem !important;
+  }
+
+  .highlight-card--yellow h2,
+  .highlight-card--yellow h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Tablet Viewports (768px – 1023px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .site-header .header-inner {
+    height: 90px;
+  }
+
+  .logo-container img {
+    height: 70px;
+  }
+
+  .hero-title {
+    font-size: 2.75rem !important;
+  }
+
+  /* Reset layout grids for tablet */
+  .hero-top-row,
+  .doctor-lead-grid,
+  .collaboration-grid,
+  .recovery-section-grid,
+  .expertise-grid,
+  .grid-2-col {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .grid-3-col {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.75rem !important;
+  }
+
+  .grid-4-col {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Tablet Card Positioning Reset */
+  .highlight-card--yellow,
+  .yellow-card,
+  .yellow-card--offset-right,
+  .yellow-card--offset-left,
+  .yellow-card--offset-top-right,
+  .yellow-card--offset-top-left,
+  .blue-card--offset-bottom-left,
+  .blue-card--offset-right {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: var(--shadow-yellow);
+    z-index: 10;
+  }
+
+  .doctor-lead-img img {
+    max-height: 420px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .team-slate-card {
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Mobile Viewports (< 768px)
+   FULL MOBILE RESPONSIVENESS FIX FOR ENTIRE SITE
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Navigation Drawer */
+  .nav-menu {
+    display: none !important; /* Hidden on mobile, drawer used instead */
+  }
+
+  .mobile-toggle {
+    display: flex !important;
+  }
+
+  .site-header .header-inner {
+    height: 75px !important;
+    padding: 8px 0 !important;
+  }
+
+  .logo-container img {
+    height: 55px !important;
+  }
+
+  /* Hero Section Mobile */
+  .hero-top-row {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-image img {
+    max-height: 320px !important;
+    width: auto !important;
+  }
+
+  /* All Grid Layouts Become Single Column Stack */
+  .doctor-lead-grid,
+  .collaboration-grid,
+  .recovery-section-grid,
+  .expertise-grid,
+  .grid-2-col,
+  .grid-3-col,
+  .grid-4-col {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Doctor Lead Image Mobile */
+  .doctor-lead-img img {
+    max-height: 350px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .collaboration-img img {
+    max-height: 320px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Highlight Cards Reset on Mobile */
+  .highlight-card--yellow,
+  .yellow-card,
+  .highlight-card--blue,
+  .blue-card,
+  .yellow-card--offset-right,
+  .yellow-card--offset-left,
+  .yellow-card--offset-top-right,
+  .yellow-card--offset-top-left,
+  .blue-card--offset-bottom-left,
+  .blue-card--offset-right {
+    margin-top: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .highlight-card--yellow h2,
+  .highlight-card--yellow h3,
+  .yellow-card h2,
+  .yellow-card h3,
+  .highlight-card--blue h2,
+  .highlight-card--blue h3,
+  .blue-card h2,
+  .blue-card h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .highlight-card--yellow p,
+  .yellow-card p,
+  .highlight-card--blue p,
+  .blue-card p {
+    font-size: 1rem !important;
+  }
+
+  /* Team Slate Card Mobile */
+  .team-slate-card {
+    padding: 1.75rem 1.25rem !important;
+    max-width: 100% !important;
+  }
+
+  .team-slate-title {
+    font-size: 1.6rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .team-slate-item {
+    gap: 0.85rem !important;
+  }
+
+  .team-slate-thumb {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .team-slate-name {
+    font-size: 1rem !important;
+  }
+
+  .team-slate-qual,
+  .team-slate-spec {
+    font-size: 0.8rem !important;
+  }
+
+  /* Section Padding Mobile */
+  .elementor-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Modal Popup Mobile */
+  .modal-content {
+    padding: 1.5rem !important;
+    margin: 0 0.5rem !important;
+  }
+
+  .modal-close-btn {
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+  }
+
+  /* Subpage Titles Mobile */
+  .page-title {
+    font-size: 2.1rem !important;
+  }
+
+  .page-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* Footer Copyright Mobile */
+  .footer-copyright {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Extra Small Phones (< 380px) */
+@media screen and (max-width: 379px) {
+  .hero-title {
+    font-size: 1.85rem !important;
+  }
+
+  .btn-primary,
+  .elementor-button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    width: 100% !important;
+  }
+}

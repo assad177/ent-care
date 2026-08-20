@@ -1,0 +1,288 @@
+/* ==========================================================================
+   THE ENT CLINIC - BASE STYLESHEET (style.css)
+   Contains core resets, typography tokens, layout containers, and entrance keyframes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Design Tokens (Extracted from Live Site CSS)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --primary-navy: #123254;
+  --secondary-slate: #465F78;
+  --header-bg: #485D70;
+  --text-dark: #123254;
+  --text-secondary: #465F78;
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --bg-alt: #f1f5f9;
+  --border-color: #e2e8f0;
+  
+  /* Accent Colors & Gradients */
+  --yellow-gold-light: #FFDC7A;
+  --yellow-gold-dark: #EBB637;
+  --yellow-gradient: linear-gradient(135deg, #FFDC7A 0%, #EBB637 100%);
+  --blue-card-gradient: linear-gradient(135deg, #465F78 0%, #123254 100%);
+  --accent-btn-gradient: linear-gradient(135deg, #3a5068 0%, #123254 100%);
+  --slate-translucent: rgba(70, 95, 120, 0.92);
+
+  /* Container & Grid Limits */
+  --container-max: 1240px;
+
+  /* Typography */
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(18, 50, 84, 0.08);
+  --shadow-md: 0 6px 18px rgba(18, 50, 84, 0.12);
+  --shadow-lg: 0 12px 30px rgba(18, 50, 84, 0.18);
+  --shadow-yellow: 0 8px 24px rgba(235, 182, 55, 0.35);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & General Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--primary-navy);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+.hero-title {
+    font-size: 20px !important;
+   
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section-padding {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* --------------------------------------------------------------------------
+   3. Entrance Keyframe Animations (100% Exact Elementor / Animate.css Specs)
+   -------------------------------------------------------------------------- */
+.elementor-invisible {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.animated {
+  animation-duration: 1.25s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}
+
+.animated-slow {
+  animation-duration: 1.8s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}
+
+.elementor-animated,
+.is-animated {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Scroll Zoom-In Animation for Images & Doctor Lead Cards */
+.doctor-lead-img img,
+.collaboration-img img,
+.hero-image img,
+.doctor-img-col img {
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.elementor-invisible .doctor-lead-img img,
+.elementor-invisible .collaboration-img img,
+.elementor-invisible .hero-image img,
+.elementor-invisible .doctor-img-col img {
+  transform: scale(0.85);
+  opacity: 0;
+}
+
+.elementor-animated .doctor-lead-img img,
+.elementor-animated .collaboration-img img,
+.elementor-animated .hero-image img,
+.elementor-animated .doctor-img-col img,
+.is-animated .doctor-lead-img img,
+.is-animated .collaboration-img img,
+.is-animated .hero-image img,
+.is-animated .doctor-img-col img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.doctor-lead-img img:hover,
+.collaboration-img img:hover {
+  transform: scale(1.03);
+}
+
+/* 100% Exact Original Elementor fadeInDown Keyframe */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDown.elementor-animated,
+.fadeInDown.is-animated {
+  animation-name: fadeInDown;
+}
+
+/* 100% Exact Original Elementor fadeInUp Keyframe */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp.elementor-animated,
+.fadeInUp.is-animated {
+  animation-name: fadeInUp;
+}
+
+/* 100% Exact Original Elementor fadeInLeft Keyframe */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft.elementor-animated,
+.fadeInLeft.is-animated {
+  animation-name: fadeInLeft;
+}
+
+/* 100% Exact Original Elementor fadeInRight Keyframe */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInRight.elementor-animated,
+.fadeInRight.is-animated {
+  animation-name: fadeInRight;
+}
+
+/* 100% Exact Original Elementor slideInRight Keyframe */
+@keyframes slideInRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight.elementor-animated,
+.slideInRight.is-animated {
+  animation-name: slideInRight;
+}
+
+/* 100% Exact Original Elementor slideInUp Keyframe */
+@keyframes slideInUp {
+  0% {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp.elementor-animated,
+.slideInUp.is-animated {
+  animation-name: slideInUp;
+}
