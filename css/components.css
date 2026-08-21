@@ -167,17 +167,18 @@
   position: fixed;
   top: 0;
   right: -100%;
-  width: 280px;
-  max-width: 80vw;
+  width: 290px;
+  max-width: 85vw;
   height: 100vh;
-  background-color: #5A6F83;
-  z-index: 999;
-  padding: 6rem 2rem 2rem;
+  background-color: #485D70;
+  z-index: 1001;
+  padding: 4.5rem 1.75rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.4);
   transition: right var(--transition-normal);
+  overflow-y: auto;
 }
 
 .mobile-nav-drawer.is-open {
@@ -187,7 +188,8 @@
 .mobile-nav-drawer .nav-link {
   font-size: 1.15rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  display: block;
 }
 
 .nav-overlay {
