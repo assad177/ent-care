@@ -49,11 +49,4 @@ Ent-care/
    - Separate, well-documented CSS files for base styles (`style.css`), UI components (`components.css`), and media queries (`responsive.css`).
    - Modular JavaScript modules (`navigation.js`, `main.js`, `animations.js`) with zero external framework dependencies.
 
-## 🚀 How to Run Locally
 
-Open any of the `.html` files in any modern web browser or start a simple local server:
-
-```bash
-python3 -m http.server 8000
-```
-Then navigate to `http://localhost:8000`.

@@ -132,15 +132,15 @@ p:last-child {
 }
 
 .animated {
-  animation-duration: 1.2s;
+  animation-duration: 1.25s;
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  animation-timing-function: ease;
 }
 
 .animated-slow {
-  animation-duration: 1.6s;
+  animation-duration: 1.8s;
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  animation-timing-function: ease;
 }
 
 .elementor-animated,
