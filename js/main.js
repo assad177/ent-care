@@ -1,6 +1,6 @@
 /**
  * ENT Clinic - Main Application JavaScript Module
- * Handles modal popups, appointment forms, and global interactive behaviors.
+ * Handles modal popups, appointment forms, and strict input field validation.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,14 +52,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Handle Form Submission
+  // Strict Field Validation Helper
+  function validateForm(formElement, alertContainer) {
+    const inputs = formElement.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+    let firstInvalidInput = null;
+
+    inputs.forEach(input => {
+      const val = input.value ? input.value.trim() : '';
+      if (!val || val === '') {
+        isValid = false;
+        input.style.borderColor = '#dc2626';
+        input.style.backgroundColor = '#fef2f2';
+        if (!firstInvalidInput) firstInvalidInput = input;
+      } else {
+        input.style.borderColor = '#d0d7de';
+        input.style.backgroundColor = '#ffffff';
+      }
+    });
+
+    if (!isValid) {
+      if (alertContainer) {
+        alertContainer.style.display = 'block';
+        alertContainer.style.backgroundColor = '#fef2f2';
+        alertContainer.style.color = '#dc2626';
+        alertContainer.style.border = '1px solid #fecaca';
+        alertContainer.innerText = 'Please fill out all required fields before making an appointment.';
+      }
+      if (firstInvalidInput) {
+        firstInvalidInput.focus();
+      }
+    } else if (alertContainer) {
+      alertContainer.style.display = 'none';
+    }
+
+    return isValid;
+  }
+
+  // Clear validation highlighting on input focus
+  document.querySelectorAll('input, select, textarea').forEach(input => {
+    input.addEventListener('input', () => {
+      input.style.borderColor = '#d0d7de';
+      input.style.backgroundColor = '#ffffff';
+    });
+    input.addEventListener('change', () => {
+      input.style.borderColor = '#d0d7de';
+      input.style.backgroundColor = '#ffffff';
+    });
+  });
+
+  // Handle Modal Form Submission
   if (appointmentForm) {
     appointmentForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
+      if (!validateForm(appointmentForm, null)) {
+        return;
+      }
+
       const submitBtn = appointmentForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.innerText : 'Submit';
-      
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerText = 'Booking...';
@@ -77,22 +130,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Contact Page Form
+  // Handle Contact Page Form Submission with Validation Checks
   const contactPageForm = document.getElementById('contactPageForm');
+  const alertContainer = document.getElementById('formValidationAlert');
+
   if (contactPageForm) {
     contactPageForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
+      if (!validateForm(contactPageForm, alertContainer)) {
+        return;
+      }
+
       const submitBtn = contactPageForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.innerText : 'Send Message';
-      
+      const originalText = submitBtn ? submitBtn.innerText : 'MAKE APPOINTMENT';
+
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerText = 'Sending...';
       }
 
       setTimeout(() => {
-        alert('Thank you for reaching out to The ENT Clinic. We have received your message and will respond within 24 hours.');
+        if (alertContainer) {
+          alertContainer.style.display = 'block';
+          alertContainer.style.backgroundColor = '#f0fdf4';
+          alertContainer.style.color = '#166534';
+          alertContainer.style.border = '1px solid #bbf7d0';
+          alertContainer.innerText = 'Thank you! Your appointment request has been received. We will contact you shortly.';
+        } else {
+          alert('Thank you! Your appointment request has been received. We will contact you shortly.');
+        }
+
         contactPageForm.reset();
         if (submitBtn) {
           submitBtn.disabled = false;

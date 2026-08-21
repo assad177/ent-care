@@ -16,14 +16,14 @@
   --bg-light: #f8fafc;
   --bg-white: #ffffff;
   --bg-alt: #f1f5f9;
-  --border-color: #e2e8f0;
+  --border-color: #d0d7de;
   
   /* Accent Colors & Gradients */
   --yellow-gold-light: #FFDC7A;
   --yellow-gold-dark: #EBB637;
   --yellow-gradient: linear-gradient(135deg, #FFDC7A 0%, #EBB637 100%);
   --blue-card-gradient: linear-gradient(135deg, #465F78 0%, #123254 100%);
-  --accent-btn-gradient: linear-gradient(135deg, #3a5068 0%, #123254 100%);
+  --accent-btn-gradient: linear-gradient(135deg, #7193b8 0%, #485d70 100%);
   --slate-translucent: rgba(70, 95, 120, 0.92);
 
   /* Container & Grid Limits */
@@ -100,10 +100,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 1rem;
 }
-.hero-title {
-    font-size: 20px !important;
-   
-}
 
 p:last-child {
   margin-bottom: 0;
@@ -128,7 +124,7 @@ p:last-child {
 .text-right { text-align: right; }
 
 /* --------------------------------------------------------------------------
-   3. Entrance Keyframe Animations (100% Exact Elementor / Animate.css Specs)
+   3. Entrance Keyframe Animations (100% Exact Elementor Specs - Smooth & Clean)
    -------------------------------------------------------------------------- */
 .elementor-invisible {
   opacity: 0;
@@ -136,15 +132,15 @@ p:last-child {
 }
 
 .animated {
-  animation-duration: 1.25s;
+  animation-duration: 1.2s;
   animation-fill-mode: both;
-  animation-timing-function: ease;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .animated-slow {
-  animation-duration: 1.8s;
+  animation-duration: 1.6s;
   animation-fill-mode: both;
-  animation-timing-function: ease;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .elementor-animated,
@@ -153,45 +149,11 @@ p:last-child {
   visibility: visible !important;
 }
 
-/* Scroll Zoom-In Animation for Images & Doctor Lead Cards */
-.doctor-lead-img img,
-.collaboration-img img,
-.hero-image img,
-.doctor-img-col img {
-  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform, opacity;
-}
-
-.elementor-invisible .doctor-lead-img img,
-.elementor-invisible .collaboration-img img,
-.elementor-invisible .hero-image img,
-.elementor-invisible .doctor-img-col img {
-  transform: scale(0.85);
-  opacity: 0;
-}
-
-.elementor-animated .doctor-lead-img img,
-.elementor-animated .collaboration-img img,
-.elementor-animated .hero-image img,
-.elementor-animated .doctor-img-col img,
-.is-animated .doctor-lead-img img,
-.is-animated .collaboration-img img,
-.is-animated .hero-image img,
-.is-animated .doctor-img-col img {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.doctor-lead-img img:hover,
-.collaboration-img img:hover {
-  transform: scale(1.03);
-}
-
-/* 100% Exact Original Elementor fadeInDown Keyframe */
+/* Exact Original Elementor fadeInDown Keyframe */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -50px, 0);
   }
   100% {
     opacity: 1;
@@ -204,11 +166,11 @@ p:last-child {
   animation-name: fadeInDown;
 }
 
-/* 100% Exact Original Elementor fadeInUp Keyframe */
+/* Exact Original Elementor fadeInUp Keyframe */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 50px, 0);
   }
   100% {
     opacity: 1;
@@ -221,11 +183,11 @@ p:last-child {
   animation-name: fadeInUp;
 }
 
-/* 100% Exact Original Elementor fadeInLeft Keyframe */
+/* Exact Original Elementor fadeInLeft Keyframe */
 @keyframes fadeInLeft {
   0% {
     opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-50px, 0, 0);
   }
   100% {
     opacity: 1;
@@ -238,11 +200,11 @@ p:last-child {
   animation-name: fadeInLeft;
 }
 
-/* 100% Exact Original Elementor fadeInRight Keyframe */
+/* Exact Original Elementor fadeInRight Keyframe */
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(50px, 0, 0);
   }
   100% {
     opacity: 1;
@@ -255,7 +217,7 @@ p:last-child {
   animation-name: fadeInRight;
 }
 
-/* 100% Exact Original Elementor slideInRight Keyframe */
+/* Exact Original Elementor slideInRight Keyframe */
 @keyframes slideInRight {
   0% {
     transform: translate3d(100%, 0, 0);
@@ -271,7 +233,7 @@ p:last-child {
   animation-name: slideInRight;
 }
 
-/* 100% Exact Original Elementor slideInUp Keyframe */
+/* Exact Original Elementor slideInUp Keyframe */
 @keyframes slideInUp {
   0% {
     transform: translate3d(0, 100%, 0);
@@ -285,4 +247,62 @@ p:last-child {
 .slideInUp.elementor-animated,
 .slideInUp.is-animated {
   animation-name: slideInUp;
+}
+
+/* --------------------------------------------------------------------------
+   4. Rounded Pill Form Field Styles (Matching Contact Page Screenshot)
+   -------------------------------------------------------------------------- */
+.pill-input {
+  border-radius: 30px !important;
+  border: 1.5px solid #d0d7de !important;
+  padding: 0.85rem 1.4rem !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  color: #485d70 !important;
+  background-color: #ffffff !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.pill-input:focus {
+  border-color: #7193b8 !important;
+  box-shadow: 0 0 0 3px rgba(113, 147, 184, 0.2) !important;
+  outline: none !important;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon-wrapper .input-icon {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.pill-btn-gradient {
+  background-image: linear-gradient(126deg, #7193b8 0%, #485d70 100%) !important;
+  border-radius: 30px !important;
+  color: #ffffff !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 1px !important;
+  padding: 0.9rem 3rem !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(72, 93, 112, 0.25) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.pill-btn-gradient:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(72, 93, 112, 0.35) !important;
 }
